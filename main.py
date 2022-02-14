@@ -105,12 +105,64 @@ def insta():
     draw = ImageDraw.Draw(image)
     font = ImageFont.truetype(r'C:\Users\Tim\Downloads\Arial-Rounded-MT-Bold-Font\ARLRDBD.ttf', 50)
 
-    #draw.text((180, 20), "tim2zg", font=font, align="center", fill=(255, 255, 255))
+    draw.text((180, 20), "tim2zg", font=font, align="center", fill=(255, 255, 255))
 
-    draw.text((220, 20), "10", font=font, align="center", fill=(255, 255, 255))
+    #draw.text((220, 20), "10", font=font, align="center", fill=(255, 255, 255))
 
     image.save("insta_mini.png")
 
 
+def github():
+    image = Image.open("github.png")
+
+    draw = ImageDraw.Draw(image)
+    font = ImageFont.truetype(r'C:\Users\Tim\Downloads\Arial-Rounded-MT-Bold-Font\ARLRDBD.ttf', 50)
+
+    draw.text((180, 20), "tim2zg", font=font, align="center", fill=(255, 255, 255))
+
+    #draw.text((220, 20), "10", font=font, align="center", fill=(255, 255, 255))
+
+    image.save("github_mini.png")
+
+
+def reedit():
+    image = Image.open("reedit.png")
+
+    draw = ImageDraw.Draw(image)
+    font = ImageFont.truetype(r'C:\Users\Tim\Downloads\Arial-Rounded-MT-Bold-Font\ARLRDBD.ttf', 50)
+
+    draw.text((180, 20), "tim2zg", font=font, align="center", fill=(255, 255, 255))
+
+    #draw.text((220, 20), "10", font=font, align="center", fill=(255, 255, 255))
+
+    image.save("reedit_mini.png")
+
+
+def twitter():
+    image = Image.open("twitter.png")
+
+    draw = ImageDraw.Draw(image)
+    font = ImageFont.truetype(r'C:\Users\Tim\Downloads\Arial-Rounded-MT-Bold-Font\ARLRDBD.ttf', 50)
+
+    draw.text((180, 20), "tim2zg", font=font, align="center", fill=(255, 255, 255))
+
+    #draw.text((220, 20), "10", font=font, align="center", fill=(255, 255, 255))
+
+    image.save("twitter_mini.png")
+
+
+def unsplash():
+    image = Image.open("unsplash.png")
+
+    draw = ImageDraw.Draw(image)
+    font = ImageFont.truetype(r'C:\Users\Tim\Downloads\Arial-Rounded-MT-Bold-Font\ARLRDBD.ttf', 50)
+
+    draw.text((180, 20), "tim2zg", font=font, align="center", fill=(255, 255, 255))
+
+    #draw.text((220, 20), "10", font=font, align="center", fill=(255, 255, 255))
+
+    image.save("unsplash_mini.png")
+
+
 if __name__ == '__main__':
-    insta()
+    unsplash()
