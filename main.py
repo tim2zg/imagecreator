@@ -164,5 +164,18 @@ def unsplash():
     image.save("unsplash_mini.png")
 
 
+def discord():
+    image = Image.open("discord.png")
+
+    draw = ImageDraw.Draw(image)
+    font = ImageFont.truetype(r'C:\Users\Tim\Downloads\Arial-Rounded-MT-Bold-Font\ARLRDBD.ttf', 35)
+
+    draw.text((150, 30), "tim2zg#7743", font=font, align="center", fill=(255, 255, 255))
+
+    #draw.text((220, 20), "10", font=font, align="center", fill=(255, 255, 255))
+
+    image.save("discord_mini.png")
+
+
 if __name__ == '__main__':
-    unsplash()
+    discord()
