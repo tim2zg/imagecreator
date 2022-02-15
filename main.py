@@ -229,4 +229,4 @@ def discord():
 
 
 if __name__ == '__main__':
-    allcontributes()
+    allcontributes()  # In the future, this will be a flask server
