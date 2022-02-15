@@ -1,26 +1,30 @@
 from PIL import ImageFont, ImageDraw, Image
 import requests
 import random
+import githubstreaker
 
 colors = ["blue", "red", "green", "yellow", "orange", "purple", "pink", "white"]
 
 
 def straktest():
     image = Image.open("mini.png")
-
+    data = githubstreaker.getthedata()["currentstreak"]
     draw = ImageDraw.Draw(image)
     font = ImageFont.truetype(r'C:\Users\Tim\Downloads\Arial-Rounded-MT-Bold-Font\ARLRDBD.ttf', 38)
     font2 = ImageFont.truetype(r'C:\Users\Tim\Downloads\Arial-Rounded-MT-Bold-Font\ARLRDBD.ttf', 33)
+    font3 = ImageFont.truetype(r'C:\Users\Tim\Downloads\Arial-Rounded-MT-Bold-Font\ARLRDBD.ttf', 10)
 
     draw.text((165, 100), "Streak:", font=font, align="center", fill=(255, 255, 255))
 
-    draw.text((220, 150), "1", font=font2, align="center", fill=(255, 255, 255))
-    #draw.text((209.25, 150), "10", font=font2, align="center", fill=(255, 255, 255))
+    #draw.text((220, 150), "1", font=font2, align="center", fill=(255, 255, 255))
+    draw.text((209.25, 150), str(data["lenth"]), font=font2, align="center", fill=(255, 255, 255))
 
     draw.text((177.5, 200), "Days!", font=font, align="center", fill=(255, 255, 255))
 
+    draw.text((155, 270), "From:" + data["start"] + " To: " + data["end"], font=font3, align="center", fill=(255, 255, 255))
 
-    for i in range(18):
+
+    for i in range(data["lenth"]):
         if i >= 6 and i <= 11:
             i = i - 6
             draw.ellipse((60 + 40, 60 + i * 40, 90 + 40, 90 + i * 40), fill='white', outline='white')
@@ -34,6 +38,53 @@ def straktest():
             draw.ellipse((60, 60 + i * 40, 90, 90 + i * 40), fill='white', outline='white')
 
     image.save("mini_with_text.png")
+
+
+def straktestlongest():
+    image = Image.open("mini.png")
+    data = githubstreaker.getthedata()["longeststreak"]
+    draw = ImageDraw.Draw(image)
+    font = ImageFont.truetype(r'C:\Users\Tim\Downloads\Arial-Rounded-MT-Bold-Font\ARLRDBD.ttf', 30)
+    font2 = ImageFont.truetype(r'C:\Users\Tim\Downloads\Arial-Rounded-MT-Bold-Font\ARLRDBD.ttf', 33)
+    font3 = ImageFont.truetype(r'C:\Users\Tim\Downloads\Arial-Rounded-MT-Bold-Font\ARLRDBD.ttf', 10)
+
+    draw.text((145, 100), "Streak MAX:", font=font, align="center", fill=(255, 255, 255))
+
+    #draw.text((220, 150), "1", font=font2, align="center", fill=(255, 255, 255))
+    draw.text((209.25, 150), str(data["lenth"]), font=font2, align="center", fill=(255, 255, 255))
+
+    draw.text((187.5, 200), "Days!", font=font, align="center", fill=(255, 255, 255))
+
+    draw.text((155, 270), "From:" + data["start"] + " To: " + data["end"], font=font3, align="center", fill=(255, 255, 255))
+
+
+    for i in range(data["lenth"]):
+        if i >= 6 and i <= 11:
+            i = i - 6
+            draw.ellipse((60 + 40, 60 + i * 40, 90 + 40, 90 + i * 40), fill='white', outline='white')
+        if i >= 12 and i <= 17:
+            i = i - 12
+            draw.ellipse((340, 60 + i * 40, 370, 90 + i * 40), fill='white', outline='white')
+        if i >= 18 and i <= 23:
+            i = i - 18
+            draw.ellipse((380, 60 + i * 40, 410, 90 + i * 40), fill='white', outline='white')
+        if i >= 0 and i <= 5:
+            draw.ellipse((60, 60 + i * 40, 90, 90 + i * 40), fill='white', outline='white')
+
+    image.save("long_with_text.png")
+
+
+def allcontributes():
+    image = Image.open("mini.png")
+    data = githubstreaker.getthedata()["totalcontributes"]
+    draw = ImageDraw.Draw(image)
+    font = ImageFont.truetype(r'C:\Users\Tim\Downloads\Arial-Rounded-MT-Bold-Font\ARLRDBD.ttf', 35)
+    font2 = ImageFont.truetype(r'C:\Users\Tim\Downloads\Arial-Rounded-MT-Bold-Font\ARLRDBD.ttf', 38)
+
+    draw.text((145, 120), "All commits:", font=font, align="center", fill=(255, 255, 255))
+    draw.text((209.25, 170), str(data), font=font2, align="center", fill=(255, 255, 255))
+
+    image.save("total_with_text.png")
 
 
 def userrepos():
@@ -178,4 +229,4 @@ def discord():
 
 
 if __name__ == '__main__':
-    insta()
+    allcontributes()

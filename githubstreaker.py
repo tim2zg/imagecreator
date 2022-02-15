@@ -90,3 +90,4 @@ def getthedata():
     print(longeststreak)
     print(currentstreak)
     print(totalcontributes)
+    return {"longeststreak": longeststreak, "currentstreak": currentstreak, "totalcontributes": totalcontributes}
