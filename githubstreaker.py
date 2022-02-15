@@ -2,6 +2,7 @@
 import os
 from dotenv import load_dotenv
 import requests
+import datetime
 
 load_dotenv()
 
@@ -15,60 +16,77 @@ def run_query(query):  # A simple function to use requests.post to make the API 
     else:
         raise Exception("Query failed to run by returning code of {}. {}".format(request.status_code, query))
 
-
-# The GraphQL query (with a few aditional bits included) itself defined as a multi-line string.
-query = """
-{
-            user(login:"tim2zg") {
-                contributionsCollection(from: "2022-01-01T00:00:00Z", to:"2022-12-31T23:59:59Z") {
-                  	contributionYears 
-                }
-            }
-        }
-"""
-
-result = run_query(query)  # Execute the query
-print(result["data"]["user"]["contributionsCollection"]["contributionYears"])
-
-years = {}
-
-for i in result["data"]["user"]["contributionsCollection"]["contributionYears"]:
+def getthedata():
+    # The GraphQL query (with a few aditional bits included) itself defined as a multi-line string.
     query = """
     {
                 user(login:"tim2zg") {
-                    contributionsCollection(from: "%d-01-01T00:00:00Z", to:"%d-12-31T23:59:59Z") {
-                        contributionCalendar {
-                            totalContributions
-                            weeks {
-                                contributionDays {
-                                contributionCount
-                                date
+                    contributionsCollection(from: "2022-01-01T00:00:00Z", to:"2022-12-31T23:59:59Z") {
+                      	contributionYears 
+                    }
+                }
+            }
+    """
+
+    result = run_query(query)  # Execute the query
+    print(result["data"]["user"]["contributionsCollection"]["contributionYears"])
+
+    years = {}
+
+    for i in result["data"]["user"]["contributionsCollection"]["contributionYears"]:
+        query = """
+        {
+                    user(login:"tim2zg") {
+                        contributionsCollection(from: "%d-01-01T00:00:00Z", to:"%d-12-31T23:59:59Z") {
+                            contributionCalendar {
+                                totalContributions
+                                weeks {
+                                    contributionDays {
+                                    contributionCount
+                                    date
+                                    }
                                 }
                             }
                         }
                     }
-                }
-    }
-"""%(i,i)
+        }
+    """ % (i, i)
 
-    years[i] = run_query(query)["data"]["user"]["contributionsCollection"]["contributionCalendar"]  # Execute the query
+        years[i] = run_query(query)["data"]["user"]["contributionsCollection"][
+            "contributionCalendar"]  # Execute the query
 
-print(reversed(years))
+    print(reversed(years))
 
-dates = {}
+    dates = {}
 
-for i in reversed(years):
-    for j in years[i]["weeks"]:
-        print(j["contributionDays"])
-        for k in j["contributionDays"]:
-            dates[k["date"]] = k["contributionCount"]
+    for i in reversed(years):
+        for j in years[i]["weeks"]:
+            print(j["contributionDays"])
+            for k in j["contributionDays"]:
+                dates[k["date"]] = k["contributionCount"]
 
-reihenvolge = sorted(dates, key=lambda x: x[1], reverse=True)
+    reihenvolge = sorted(dates, key=lambda x: x[1], reverse=True)
 
-totalcontributes = 0
+    totalcontributes = 0
+    currentstreak = {"lenth": 0, "start": None, "end": None}
+    longeststreak = {"lenth": 0, "start": None, "end": None}
 
+    for i in reihenvolge:
+        totalcontributes += dates[i]
+        if dates[i] > 0:
+            currentstreak["lenth"] += 1
+            currentstreak["end"] = i
+            if currentstreak["lenth"] == 1:
+                currentstreak["start"] = i
+            if currentstreak["lenth"] > longeststreak["lenth"]:
+                longeststreak["lenth"] = currentstreak["lenth"]
+                longeststreak["start"] = currentstreak["start"]
+                longeststreak["end"] = currentstreak["end"]
+        elif i < datetime.datetime.utcnow().isoformat():
+            currentstreak["lenth"] = 0
+            currentstreak["start"] = None
+            currentstreak["end"] = None
 
-for i in reihenvolge:
-    totalcontributes += dates[i]
-
-print(totalcontributes)
+    print(longeststreak)
+    print(currentstreak)
+    print(totalcontributes)
