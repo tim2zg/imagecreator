@@ -5,14 +5,16 @@ import githubstreaker
 
 colors = ["blue", "red", "green", "yellow", "orange", "purple", "pink", "white"]
 
+fontpath = r'C:\Users\Tim\Downloads\Arial-Rounded-MT-Bold-Font\ARLRDBD.ttf'
+
 
 def straktest():
     image = Image.open("mini.png")
     data = githubstreaker.getthedata()["currentstreak"]
     draw = ImageDraw.Draw(image)
-    font = ImageFont.truetype(r'C:\Users\Tim\Downloads\Arial-Rounded-MT-Bold-Font\ARLRDBD.ttf', 38)
-    font2 = ImageFont.truetype(r'C:\Users\Tim\Downloads\Arial-Rounded-MT-Bold-Font\ARLRDBD.ttf', 33)
-    font3 = ImageFont.truetype(r'C:\Users\Tim\Downloads\Arial-Rounded-MT-Bold-Font\ARLRDBD.ttf', 10)
+    font = ImageFont.truetype(fontpath, 38)
+    font2 = ImageFont.truetype(fontpath, 33)
+    font3 = ImageFont.truetype(fontpath, 10)
 
     draw.text((165, 100), "Streak:", font=font, align="center", fill=(255, 255, 255))
 
@@ -37,16 +39,16 @@ def straktest():
         if i >= 0 and i <= 5:
             draw.ellipse((60, 60 + i * 40, 90, 90 + i * 40), fill='white', outline='white')
 
-    image.save("mini_with_text.png")
+    image.save("current-streak.png")
 
 
 def straktestlongest():
     image = Image.open("mini.png")
     data = githubstreaker.getthedata()["longeststreak"]
     draw = ImageDraw.Draw(image)
-    font = ImageFont.truetype(r'C:\Users\Tim\Downloads\Arial-Rounded-MT-Bold-Font\ARLRDBD.ttf', 30)
-    font2 = ImageFont.truetype(r'C:\Users\Tim\Downloads\Arial-Rounded-MT-Bold-Font\ARLRDBD.ttf', 33)
-    font3 = ImageFont.truetype(r'C:\Users\Tim\Downloads\Arial-Rounded-MT-Bold-Font\ARLRDBD.ttf', 10)
+    font = ImageFont.truetype(fontpath, 30)
+    font2 = ImageFont.truetype(fontpath, 33)
+    font3 = ImageFont.truetype(fontpath, 10)
 
     draw.text((145, 100), "Streak MAX:", font=font, align="center", fill=(255, 255, 255))
 
@@ -71,20 +73,20 @@ def straktestlongest():
         if i >= 0 and i <= 5:
             draw.ellipse((60, 60 + i * 40, 90, 90 + i * 40), fill='white', outline='white')
 
-    image.save("long_with_text.png")
+    image.save("streaklong.png")
 
 
 def allcontributes():
     image = Image.open("mini.png")
     data = githubstreaker.getthedata()["totalcontributes"]
     draw = ImageDraw.Draw(image)
-    font = ImageFont.truetype(r'C:\Users\Tim\Downloads\Arial-Rounded-MT-Bold-Font\ARLRDBD.ttf', 35)
-    font2 = ImageFont.truetype(r'C:\Users\Tim\Downloads\Arial-Rounded-MT-Bold-Font\ARLRDBD.ttf', 38)
+    font = ImageFont.truetype(fontpath, 35)
+    font2 = ImageFont.truetype(fontpath, 38)
 
     draw.text((145, 120), "All commits:", font=font, align="center", fill=(255, 255, 255))
     draw.text((209.25, 170), str(data), font=font2, align="center", fill=(255, 255, 255))
 
-    image.save("total_with_text.png")
+    image.save("contributes.png")
 
 
 def userrepos():
@@ -93,14 +95,14 @@ def userrepos():
     image = Image.open("mini.png")
 
     draw = ImageDraw.Draw(image)
-    font = ImageFont.truetype(r'C:\Users\Tim\Downloads\Arial-Rounded-MT-Bold-Font\ARLRDBD.ttf', 38)
-    font2 = ImageFont.truetype(r'C:\Users\Tim\Downloads\Arial-Rounded-MT-Bold-Font\ARLRDBD.ttf', 33)
+    font = ImageFont.truetype(fontpath, 38)
+    font2 = ImageFont.truetype(fontpath, 33)
 
     draw.text((55, 100), "You can access my", font=font, align="center", fill=(255, 255, 255))
     draw.text((209.25, 150), str(data["public_repos"]), font=font2, align="center", fill=(255, 255, 255))
     draw.text((177.5, 200), "Repos!", font=font, align="center", fill=(255, 255, 255))
 
-    image.save("mini_with_text_tow.png")
+    image.save("userrepos.png")
 
 
 def myfollowers():
@@ -109,21 +111,21 @@ def myfollowers():
     image = Image.open("mini.png")
 
     draw = ImageDraw.Draw(image)
-    font = ImageFont.truetype(r'C:\Users\Tim\Downloads\Arial-Rounded-MT-Bold-Font\ARLRDBD.ttf', 38)
-    font2 = ImageFont.truetype(r'C:\Users\Tim\Downloads\Arial-Rounded-MT-Bold-Font\ARLRDBD.ttf', 33)
+    font = ImageFont.truetype(fontpath, 38)
+    font2 = ImageFont.truetype(fontpath, 33)
 
     draw.text((160, 100), "I have", font=font, align="center", fill=(255, 255, 255))
     draw.text((209.25, 150), str(data["followers"]), font=font2, align="center", fill=(255, 255, 255))
     draw.text((140, 200), "followers!", font=font, align="center", fill=(255, 255, 255))
 
-    image.save("mini_with_text_three.png")
+    image.save("followers.png")
 
 
 def getmainpage():
     image = Image.open("a.png")
 
     draw = ImageDraw.Draw(image)
-    font = ImageFont.truetype(r'C:\Users\Tim\Downloads\Arial-Rounded-MT-Bold-Font\ARLRDBD.ttf', 50)
+    font = ImageFont.truetype(fontpath, 50)
 
     draw.text((337, 358), "I'm Tim 15 Year old Hobby Dev from Switzerland! ", font=font, align="center", fill=(255, 255, 255))
     draw.text((335.5, 458.56), "I'm not very experienced, but I love to learn new things!", font=font, align="center", fill=(255, 255, 255))
@@ -147,14 +149,14 @@ def getmainpage():
     for i in range(count):
         draw.ellipse((1065 + 80 * i, 1020, 1125 + 80 * i, 1080), fill=usecolors[i], outline='black')
 
-    image.save("a_mini.png")
+    image.save("main.png")
 
 
 def insta():
     image = Image.open("insta.png")
 
     draw = ImageDraw.Draw(image)
-    font = ImageFont.truetype(r'C:\Users\Tim\Downloads\Arial-Rounded-MT-Bold-Font\ARLRDBD.ttf', 50)
+    font = ImageFont.truetype(fontpath, 50)
 
     draw.text((180, 20), "tim2zg", font=font, align="center", fill=(255, 255, 255))
 
@@ -167,7 +169,7 @@ def github():
     image = Image.open("github.png")
 
     draw = ImageDraw.Draw(image)
-    font = ImageFont.truetype(r'C:\Users\Tim\Downloads\Arial-Rounded-MT-Bold-Font\ARLRDBD.ttf', 50)
+    font = ImageFont.truetype(fontpath, 50)
 
     draw.text((180, 20), "tim2zg", font=font, align="center", fill=(255, 255, 255))
 
@@ -180,7 +182,7 @@ def reedit():
     image = Image.open("reedit.png")
 
     draw = ImageDraw.Draw(image)
-    font = ImageFont.truetype(r'C:\Users\Tim\Downloads\Arial-Rounded-MT-Bold-Font\ARLRDBD.ttf', 50)
+    font = ImageFont.truetype(fontpath, 50)
 
     draw.text((180, 20), "tim2zg", font=font, align="center", fill=(255, 255, 255))
 
@@ -193,7 +195,7 @@ def twitter():
     image = Image.open("twitter.png")
 
     draw = ImageDraw.Draw(image)
-    font = ImageFont.truetype(r'C:\Users\Tim\Downloads\Arial-Rounded-MT-Bold-Font\ARLRDBD.ttf', 50)
+    font = ImageFont.truetype(fontpath, 50)
 
     draw.text((180, 20), "tim2zg", font=font, align="center", fill=(255, 255, 255))
 
@@ -206,7 +208,7 @@ def unsplash():
     image = Image.open("unsplash.png")
 
     draw = ImageDraw.Draw(image)
-    font = ImageFont.truetype(r'C:\Users\Tim\Downloads\Arial-Rounded-MT-Bold-Font\ARLRDBD.ttf', 50)
+    font = ImageFont.truetype(fontpath, 50)
 
     draw.text((180, 20), "tim2zg", font=font, align="center", fill=(255, 255, 255))
 
@@ -219,7 +221,7 @@ def discord():
     image = Image.open("discord.png")
 
     draw = ImageDraw.Draw(image)
-    font = ImageFont.truetype(r'C:\Users\Tim\Downloads\Arial-Rounded-MT-Bold-Font\ARLRDBD.ttf', 35)
+    font = ImageFont.truetype(fontpath, 35)
 
     draw.text((150, 30), "tim2zg#7743", font=font, align="center", fill=(255, 255, 255))
 
