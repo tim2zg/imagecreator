@@ -16,14 +16,17 @@ def straktest():
     font2 = ImageFont.truetype(fontpath, 33)
     font3 = ImageFont.truetype(fontpath, 10)
 
-    draw.text((165, 100), "Streak:", font=font, align="center", fill=(255, 255, 255))
+    draw.text((165, 100), "Streak: ", font=font, align="center", fill=(255, 255, 255))
 
     #draw.text((220, 150), "1", font=font2, align="center", fill=(255, 255, 255))
     draw.text((209.25, 150), str(data["lenth"]), font=font2, align="center", fill=(255, 255, 255))
 
     draw.text((177.5, 200), "Days!", font=font, align="center", fill=(255, 255, 255))
 
-    draw.text((155, 270), "From:" + data["start"] + " To: " + data["end"], font=font3, align="center", fill=(255, 255, 255))
+    if data["lenth"] == 0:
+        draw.text((155, 270), "From: " + "Today" + " To: " + "Today", font=font3, align="center", fill=(255, 255, 255))
+    else:
+        draw.text((155, 270), "From: " + data["start"] + " To: " + data["end"], font=font3, align="center", fill=(255, 255, 255))
 
 
     for i in range(data["lenth"]):
@@ -57,7 +60,7 @@ def straktestlongest():
 
     draw.text((187.5, 200), "Days!", font=font, align="center", fill=(255, 255, 255))
 
-    draw.text((155, 270), "From:" + data["start"] + " To: " + data["end"], font=font3, align="center", fill=(255, 255, 255))
+    draw.text((155, 270), "From: " + data["start"] + " To: " + data["end"], font=font3, align="center", fill=(255, 255, 255))
 
 
     for i in range(data["lenth"]):
@@ -231,4 +234,4 @@ def discord():
 
 
 if __name__ == '__main__':
-    allcontributes()  # In the future, this will be a flask server
+    straktest()  # In the future, this will be a flask server
