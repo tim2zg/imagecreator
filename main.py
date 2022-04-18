@@ -130,12 +130,12 @@ def getmainpage():
     draw = ImageDraw.Draw(image)
     font = ImageFont.truetype(fontpath, 50)
 
-    draw.text((337, 358), "I'm Tim 15 Year old Hobby Dev from Switzerland! ", font=font, align="center", fill=(255, 255, 255))
-    draw.text((335.5, 458.56), "I'm not very experienced, but I love to learn new things!", font=font, align="center", fill=(255, 255, 255))
+    draw.text((337, 358), "I am Tim, 15 year old junior Dev from Switzerland! ", font=font, align="center", fill=(255, 255, 255))
+    draw.text((335.5, 458.56), "I am excited to learn a lot of new things about IT technologies and happy to exchange my learnings with other nerds.", font=font, align="center", fill=(255, 255, 255))
     draw.text((340.5, 574.47), "You can DM me if you want to talk about IT", font=font, align="center", fill=(255, 255, 255))
-    draw.text((340.5, 634.47), "and other Stuff:) would be a pleasure 4 me!", font=font, align="center", fill=(255, 255, 255))
-    draw.text((340.5, 754.47), "Feel free to use my code and projects if they work!", font=font, align="center", fill=(255, 255, 255))
-    draw.text((340.5, 814.47), "I love tech and the nerd stuff ;)", font=font, align="center", fill=(255, 255, 255))
+    draw.text((340.5, 634.47), "and other stuff:), would be a pleasure 4 me!", font=font, align="center", fill=(255, 255, 255))
+    draw.text((340.5, 754.47), "Feel free to use my code and projects if you can use it!", font=font, align="center", fill=(255, 255, 255))
+    draw.text((340.5, 814.47), "Looking forward to exchange tech and it stuff with you ;)", font=font, align="center", fill=(255, 255, 255))
 
     draw.line((845, 1050, 1045, 1050), fill=random.choice(colors), width=60)
 
@@ -234,4 +234,4 @@ def discord():
 
 
 if __name__ == '__main__':
-    straktest()  # In the future, this will be a flask server
+    getmainpage()  # In the future, this will be a flask server
