@@ -131,11 +131,15 @@ def getmainpage():
     font = ImageFont.truetype(fontpath, 50)
 
     draw.text((337, 358), "I am Tim, 15 year old junior Dev from Switzerland! ", font=font, align="center", fill=(255, 255, 255))
-    draw.text((335.5, 458.56), "I am excited to learn a lot of new things about IT technologies and happy to exchange my learnings with other nerds.", font=font, align="center", fill=(255, 255, 255))
-    draw.text((340.5, 574.47), "You can DM me if you want to talk about IT", font=font, align="center", fill=(255, 255, 255))
-    draw.text((340.5, 634.47), "and other stuff:), would be a pleasure 4 me!", font=font, align="center", fill=(255, 255, 255))
-    draw.text((340.5, 754.47), "Feel free to use my code and projects if you can use it!", font=font, align="center", fill=(255, 255, 255))
-    draw.text((340.5, 814.47), "Looking forward to exchange tech and it stuff with you ;)", font=font, align="center", fill=(255, 255, 255))
+    draw.text((335.5, 418), "I am excited to learn a lot of new things about", font=font, align="center", fill=(255, 255, 255))
+    draw.text((335.5, 478), "IT technologies and happy to exchange my ", font=font, align="center", fill=(255, 255, 255))
+    draw.text((335.5, 538), "learnings with other nerds!", font=font, align="center", fill=(255, 255, 255))
+    draw.text((340.5, 608), "You can DM me if you want to talk about IT", font=font, align="center", fill=(255, 255, 255))
+    draw.text((340.5, 668), "and other stuff:), would be a pleasure 4 me!", font=font, align="center", fill=(255, 255, 255))
+    draw.text((340.5, 738), "Feel free to use my code and projects", font=font, align="center", fill=(255, 255, 255))
+    draw.text((340.5, 788), "if you can use it!", font=font, align="center", fill=(255, 255, 255))
+    draw.text((340.5, 848), "Looking forward to exchange tech and", font=font, align="center", fill=(255, 255, 255))
+    draw.text((340.5, 908), "it stuff with you ;)", font=font, align="center", fill=(255, 255, 255))
 
     draw.line((845, 1050, 1045, 1050), fill=random.choice(colors), width=60)
 
